@@ -1,5 +1,6 @@
 import algosdk from "algosdk";
 
+// Algorand configuration
 const algodToken = "a".repeat(64);
 const server: string = "http://localhost";
 const port: string = "4001";
@@ -15,3 +16,8 @@ export function getAccount(): algosdk.Account {
     return account;
 }
 
+// AQI API configuration
+export const apiConfig = {
+    baseUrl: 'https://api.waqi.info',
+    token: 'e1e26600861c3e38c921da095baad05c07d509cd'
+};

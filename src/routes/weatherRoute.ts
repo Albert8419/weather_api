@@ -1,13 +1,16 @@
 import express from "express";
-import { getWeatherData } from "../controllers/weatherController.js";
+import { getWeatherData, fetchAirQuality } from "../controllers/weatherController.js";
 import { validateCityName } from "../middleware/validators.js";
 
-
-// We will create a router object
+// Creating a router object for managing routes
 const router = express.Router();
 
-// We will create a route for the weather data based on the city name
+// Route to get weather or air quality data based on the city name
+// This route includes middleware to validate the city name before processing the request in the controller
 router.get("/:city", validateCityName, getWeatherData);
 
-// We will export the router
+// Additional route to fetch real-time air quality data for a specified location
+router.get("/air-quality/:location", fetchAirQuality);
+
+// Exporting the router for use in the main server configuration
 export default router;

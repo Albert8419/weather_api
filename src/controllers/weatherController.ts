@@ -2,7 +2,8 @@ import { Request, Response } from "express";
 import {
   generateDublinWeatherData,
   generateLondonWeatherData,
-} from "../services/weatherService.js";
+  getAirQuality
+} from "../services/weatherService.js"; // Make sure this path is correct
 import { validationResult } from "express-validator";
 
 /**
@@ -32,19 +33,27 @@ export const getWeatherData = async (req: Request, res: Response) => {
 
     // We will use an if statement to check which city was passed in
     if (city === "london") {
-      console.log(generateLondonWeatherData());
       finalWeatherData = generateLondonWeatherData();
     } else if (city === "dublin") {
       finalWeatherData = generateDublinWeatherData();
     } else {
-      // If the city is not london or dublin, we will throw an error
-      res.status(404).send("City not found");
+      // If the city is not london or dublin, we try to fetch AQI data
+      try {
+        const aqiData = await getAirQuality(city);
+        res.status(200).json(aqiData);
+        return;
+      } catch (aqiError) {
+        console.error("AQI Fetching error", aqiError);
+        res.status(404).json({ message: "City not found or AQI data unavailable" });
+        return;
+      }
     }
 
     // We will return the weather data as JSON
     res.status(200).json(finalWeatherData);
   } catch (error) {
     // If there is an error, we will log it and send a 500 status code
+    console.error("Error in fetching weather data", error);
     res.status(500).send("Error in fetching weather data");
   }
 };

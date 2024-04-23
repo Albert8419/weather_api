@@ -1,5 +1,7 @@
 import { faker } from "@faker-js/faker";
+import axios from 'axios';
 import { storeWeatherData } from "../helpers/helpers.js";
+import { apiConfig } from "../config"; // Assuming the config file is in the parent directory
 
 export const generateLondonWeatherData = (): WeatherData => {
   // Generate random weather data
@@ -11,7 +13,7 @@ export const generateLondonWeatherData = (): WeatherData => {
     rain: faker.number.int({ min: 65, max: 75 }),
   };
 
-storeWeatherData(generatedWeatherData).catch(console.error);
+  storeWeatherData(generatedWeatherData).catch(console.error);
 
   // Return weather data
   return generatedWeatherData;
@@ -31,4 +33,20 @@ export const generateDublinWeatherData = (): WeatherData => {
 
   // Return weather data
   return generatedWeatherData;
+};
+
+// New function to fetch air quality data from the AQI API
+export const getAirQuality = async (location: string): Promise<any> => {
+  try {
+    const url = `${apiConfig.baseUrl}/feed/${location}/?token=${apiConfig.token}`;
+    const response = await axios.get(url);
+    if (response.data.status === 'ok') {
+      return response.data.data;
+    } else {
+      throw new Error('Failed to fetch air quality data');
+    }
+  } catch (error) {
+    console.error('Error fetching air quality data:', error);
+    throw error;
+  }
 };
