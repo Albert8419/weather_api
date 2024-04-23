@@ -1,22 +1,25 @@
 import express from "express";
-import weatherRoute from "./routes/weatherRoute.js";
 import cors from "cors";
 import axios from 'axios'; // Using ES6 import for axios
+import weatherRoute from "./routes/weatherRoute.js";
 import aqiRoute from "./routes/aqiRoute.js"; // Import the new AQI route
 
 // We will create an express app
 const app = express();
-app.use(cors());
 
-// The port that the express server will listen on
-const PORT = 3000;
+// CORS configuration for development, replace '*' with your specific front-end domain in production
+const corsOptions = {
+  origin: '*', // Allow all origins for development
+  optionsSuccessStatus: 200 // For legacy browser support
+};
+app.use(cors(corsOptions));
 
+// Middleware to parse JSON bodies
 app.use(express.json());
-app.use(cors());
 
-// We define our routes
+// API Routes
 app.use("/api/weather", weatherRoute);
-app.use("/api/aqi", aqiRoute); // Add the AQI route
+app.use("/api/aqi", aqiRoute);
 
 // Function to fetch AQI data
 async function fetchAQIData(city: string) {
@@ -30,7 +33,7 @@ async function fetchAQIData(city: string) {
   }
 }
 
-// Route to fetch AQI data
+// Route to fetch AQI data dynamically from the AQI API
 app.get("/api/aqi/:city", async (req, res) => {
   const city = req.params.city;
   const data = await fetchAQIData(city);
@@ -40,6 +43,9 @@ app.get("/api/aqi/:city", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch AQI data" });
   }
 });
+
+// Define the server's listening port
+const PORT = 3000;
 
 // Start the express server
 app.listen(PORT, () => {
