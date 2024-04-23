@@ -11,6 +11,7 @@ app.use(cors());
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cors());
 
 // We define our first route
 app.use("/api/weather", weatherRoute);
