@@ -12,5 +12,6 @@ router.get("/:city", validateCityName, getWeatherData);
 // Additional route to fetch real-time air quality data for a specified location
 router.get("/air-quality/:location", fetchAirQuality);
 
+
 // Exporting the router for use in the main server configuration
 export default router;
