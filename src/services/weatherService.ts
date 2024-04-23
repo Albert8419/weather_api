@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import axios from 'axios';
 import { storeWeatherData } from "../helpers/helpers.js";
-import { apiConfig } from "../config"; // Assuming the config file is in the parent directory
+import { apiConfig } from "../config/config.js"; // Check if the path is correct and if it should be '.ts'
 
 export const generateLondonWeatherData = (): WeatherData => {
   // Generate random weather data
