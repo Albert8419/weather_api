@@ -1,67 +1,60 @@
-# Weather API
+Air Quality Index (AQI) API
 
-This Weather API is built using Node.js and Express, and it's designed to fetch weather data for a specified city. It's a simple demonstration of creating and deploying RESTful APIs with a service layer architecture, using TypeScript for improved code reliability.
+This AQI API is built using Node.js and Express, designed to fetch Air Quality Index (AQI) data for a specified city. It's a demonstration of creating and deploying RESTful APIs with a service layer architecture, using TypeScript for improved code reliability.
 
-## Features
+Features
 
-- Fetch weather data for any city.
-- Implemented using Node.js, Express, and TypeScript.
-- API documentation using Swagger (OpenAPI Specification).
-- Test API endpoints with Postman.
+Fetch AQI data for any city.
 
-## Installation
+Implemented using Node.js, Express, and TypeScript.
+
+API documentation using Swagger (OpenAPI Specification).
+
+Test API endpoints with Postman.
+
+Installation
 
 To get started with this project, clone the repository and install the dependencies.
 
-```bash
-  git clone https://github.com/your-username/weather-api.git
-  cd weather-api
-```
+
+git clone https://github.com/Albert8419/aqi-api.git
+
+cd aqi-api
 
 Now install the dependencies.
 
-```bash
-    npm install
-```
+npm install
 
-## Run in Development
+Run in Development
 
-To run the Weather API in a development environment, follow these steps:
+To run the AQI API in a development environment, follow these steps:
 
 Start the TypeScript Compiler in Watch Mode:
 
-- Open a terminal in the project root directory.
-- Run the TypeScript compiler in watch mode, which will compile the TypeScript files to JavaScript in real-time as you make changes.
+Open a terminal in the project root directory.
 
-```bash
+Run the TypeScript compiler in watch mode, which will compile the TypeScript files to JavaScript in real-time as you make changes.
+
 npm run build:watch
-```
 
 Start the Development Server:
 
-- Open another terminal while the first one is still running.
-- Run the development server, which will use the compiled JavaScript files.
+Open another terminal while the first one is still running.
 
-```bash
+Run the development server, which will use the compiled JavaScript files.
+
 npm run dev
-```
 
 This setup allows you to actively develop and test your application with live updates as you save your TypeScript files.
 
-## Run Locally
+Run Locally
 
-For local running of the Weather API, especially in a production-like environment, follow these steps:
+For local running of the AQI API, especially in a production-like environment, follow these steps:
 
 Compile the TypeScript files to JavaScript.
 
-```bash
-  npm run build
-
-```
+npm run build
 
 Start the server
 
-```bash
-  npm run start
-```
-Exported key for account 662SPTXKSTPKEO7XKJEHYFYJETUUN24BRVNTC62L5CLQCYWGXCWQRSHBKE: "depend inform blouse winner joke include school cabbage upon orphan spoon screen inspire gap hybrid liar bullet answer just excess meadow boss alert abandon magnet"
+npm run start

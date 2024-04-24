@@ -1,13 +1,13 @@
 {
   "name": "weather_api",
   "version": "1.0.0",
-  "description": "The Weather API",
+  "description": "An API for fetching Air Quality Index (AQI) data",
   "type": "module",
   "engines": {
     "node": ">= 18.12 <21"
   },
   "license": "MIT",
-  "author": "Lucian Duta",
+  "author": "Albert Czegenyi",
   "scripts": {
     "start": "node dist/src/server.js",
     "dev": "nodemon dist/src/server.js",

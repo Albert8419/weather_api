@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import axios from 'axios'; // Using ES6 import for axios
-import weatherRoute from "./routes/weatherRoute.js";
 import aqiRoute from "./routes/aqiRoute.js"; // Import the new AQI route
 
 // We will create an express app
@@ -17,8 +16,7 @@ app.use(cors(corsOptions));
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// API Routes
-app.use("/api/weather", weatherRoute);
+// API Route for AQI data
 app.use("/api/aqi", aqiRoute);
 
 // Function to fetch AQI data

@@ -1,7 +1,7 @@
-interface WeatherData {
+interface AQIData {
   city: string;
-  temperature: number;
-  humidity: number;
-  wind: number;
-  rain: number;
+  qualityIndex: number;
+  pollutant: string;
 }
+
+
