@@ -4,7 +4,7 @@ import algosdk from "algosdk";
 const algodToken = "a".repeat(64);
 const server: string = "http://localhost";
 const port: string = "4001";
-const mnemonic: string ="depend inform blouse winner joke include school cabbage upon orphan spoon screen inspire gap hybrid liar bullet answer just excess meadow boss alert abandon magnet";
+const mnemonic: string ="fish what level loop combine rough wear equip range shaft sudden cup hen crucial blast spice cross have labor damp nest minimum other absent thought";
 
 export function getClient(): algosdk.Algodv2 {
     let client = new algosdk.Algodv2(algodToken, server, port);
