@@ -3,12 +3,12 @@ import cors from "cors";
 import axios from 'axios'; // Using ES6 import for axios
 import aqiRoute from "./routes/aqiRoute.js"; // Import the new AQI route
 
-// We will create an express app
+// Creating an express app
 const app = express();
 
-// CORS configuration for development, replace '*' with your specific front-end domain in production
+// CORS configuration for development
 const corsOptions = {
-  origin: '*', // Allow all origins for development
+  origin: '*', // Allows all origins for development
   optionsSuccessStatus: 200 // For legacy browser support
 };
 app.use(cors(corsOptions));
@@ -42,10 +42,10 @@ app.get("/api/aqi/:city", async (req, res) => {
   }
 });
 
-// Define the server's listening port
+// Defines the server's listening port
 const PORT = 3000;
 
-// Start the express server
+// Starts the express server
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });

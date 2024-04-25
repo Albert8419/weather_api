@@ -1,42 +1,55 @@
 import { Request, Response } from "express";
-import { getAirQuality } from "../services/aqiService.js"; // Make sure this path is correct
+import { getAirQuality } from "../services/aqiService.js";
 import { validationResult } from "express-validator";
 
 /**
- * Gets the AQI data for a city
+ * Getting the AQI data for a city
  * @param req the request object
  * @param res the response object
  */
+
 export const getAQIData = async (req: Request, res: Response) => {
+  // Validating the request parameters
   const errors = validationResult(req);
 
+  // Checking for validation errors
   if (!errors.isEmpty()) {
-    console.error("Validation error", errors.mapped());
-    res.status(400).json({ errors: errors.array() });
-    return;
+      // Logging validation errors
+      console.error("Validation error", errors.mapped());
+      // Returning validation error response
+      res.status(400).json({ errors: errors.array() });
+      return;
   }
 
   try {
-    const { city } = req.params;
+      // Extracting city parameter from the request
+      const { city } = req.params;
 
-    if (!city) {
-      res.status(400).json({ message: "City parameter is missing" });
-      return;
-    }
+      // Checking if city parameter is missing
+      if (!city) {
+          // Returning missing city parameter error response
+          res.status(400).json({ message: "City parameter is missing" });
+          return;
+      }
 
-    try {
-      const aqiData = await getAirQuality(city);
-      res.status(200).json(aqiData);
-      return;
-    } catch (aqiError) {
-      console.error("AQI Fetching error", aqiError);
-      res.status(404).json({ message: "City not found or AQI data unavailable" });
-      return;
-    }
+      try {
+          // Fetching AQI data for the city
+          const aqiData = await getAirQuality(city);
+          // Returning AQI data response
+          res.status(200).json(aqiData);
+          return;
+      } catch (aqiError) {
+          // Log AQI fetching error
+          console.error("AQI Fetching error", aqiError);
+          // Returning city not found or AQI data unavailable error response
+          res.status(404).json({ message: "City not found or AQI data unavailable" });
+          return;
+      }
   } catch (error) {
-    console.error("Error in fetching AQI data", error);
-    res.status(500).send("Error in fetching AQI data");
+      // Logging error in fetching AQI data
+      console.error("Error in fetching AQI data", error);
+      // Return internal server error response
+      res.status(500).send("Error in fetching AQI data");
   }
 };
 
-// Removing the fetchAirQuality function as it's redundant

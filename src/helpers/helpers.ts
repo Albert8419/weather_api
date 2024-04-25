@@ -1,3 +1,4 @@
+// Importing the Algorand SDK and configuration functions
 import algosdk from "algosdk";
 import { getClient, getAccount } from "../config/config.js";
 
