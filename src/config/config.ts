@@ -11,7 +11,7 @@ const server: string = "http://localhost";
 const port: string = "4001";
 
 // Setting the mnemonic passphrase for the account
-const mnemonic: string ="session recall clarify journey fashion rural steel clay brick yard winner major chuckle hospital soldier file tumble monster jeans ball differ person butter able setup";
+const mnemonic: string ="cabbage moral dizzy reunion menu provide live guard inject panic spend clog dismiss shoe embrace rough upset weird pupil mule hope later mule able razor";
 
 // Function to get the Algorand client
 export function getClient(): algosdk.Algodv2 {
